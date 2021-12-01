@@ -3,6 +3,7 @@
 
 import os
 import time
+import atexit
 import hid
 
 # Use to set delay between reset and device reopen. if negative, don't reset at all
@@ -503,3 +504,4 @@ class RP2040_u2if:
 
 
 rp2040_u2if = RP2040_u2if()
+atexit.register(lambda: rp2040_u2if._hid.close())
